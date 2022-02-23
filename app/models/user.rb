@@ -2,7 +2,12 @@ class User < ApplicationRecord
     has_many :books
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
   has_one_attached :profile_image
+validates :name, presence: true
+validates :name,length: { in: 2..20 }
+validates :name, uniqueness: true
+validates :introduction, length: { maximum: 50 }
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

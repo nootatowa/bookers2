@@ -2,9 +2,17 @@
 <div class="container">
 <div class="low">
 <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+
+<% if @book.errors.any? %>
+  <%= @book.errors.count %> errors prohibited this obj from being saved:
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <h1>Editing Book</h1>
-
-
   <%= form_with model: @book do |f| %>
   <div>
     <h6>Title</h6>
@@ -18,7 +26,7 @@
       <%= f.submit 'Update Book',class:"btn btn-success"%>
   </div>
 <% end %>
-  <%= link_to "Show", user_path %>
+  <%= link_to "Show", book_path %>
   |
   <%= link_to "Back", books_path %>
 </div>

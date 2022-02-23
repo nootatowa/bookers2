@@ -18,7 +18,7 @@
     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
-          <div class="navbar-collapse collapse" id="navbarNavDropdown" style="">
+        <div class="navbar-collapse collapse" id="navbarNavDropdown" style="">
         <ul class="navbar-nav ml-auto">
     <% if user_signed_in? %>
        <li class="nav-item mr-3">
@@ -84,6 +84,9 @@
     </div>
   </nav>
 </header>
+  <%flash.each do |message_type, message|%>
+    <%= content_tag :div, message, class: message_type %>
+  <%end%>
     <%= yield %>
 
 

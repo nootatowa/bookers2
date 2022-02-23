@@ -1,6 +1,6 @@
 <div class="container px-5 px-sm-0">
 <div class="row">
-<%= render 'list', books: @books %>
+<%= render 'list', books: @books, book: @new, user: @user %>
 <div class="col-md-8 offset-md-1">
 
   <h2>Book detail</h2>
@@ -14,11 +14,14 @@
   <br>
    <%= @book.user.name %>
    <% end %>
-　</td>
+ </td>
   <td>
    <%= link_to book_path(@book) do %>
    <%= @book.title %>
    <% end %>
+ </td>
+ <td>
+   <%= @book.body %>
  </td>
  <td>
   <% if @book.user == current_user %>
